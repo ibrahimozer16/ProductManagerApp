@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ProductCatalogScreen from './screens/ProductCatalogScreen';
+import ProductDetailScreen from './screens/ProductDetailScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
+import CartScreen from './screens/CartScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import { ProductProvider } from './context/ProductContext';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ProductProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="ProductCatalog" component={ProductCatalogScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Favorites" component={FavoritesScreen} />
+          <Stack.Screen name="Cart" component={CartScreen} />
+          <Stack.Screen name="Payment" component={PaymentScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ProductProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
