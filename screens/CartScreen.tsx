@@ -87,8 +87,8 @@ export default function CartScreen({navigation}:{navigation:any}) {
         <Text style={styles.totalCart}>{calculateTotalPrice()}</Text>
       </View>
       <View style={styles.payment}>
-        <TouchableOpacity style={styles.button}>
-          <Text>Ödemeyi Tamamla</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Payment')}>
+          <Text>Ödemeye Geç</Text>
         </TouchableOpacity>
       </View>
     </View>
